@@ -1,0 +1,42 @@
+@mixin heightWidth {
+    width: 252px;
+        height: 32px;
+}
+.login {
+    justify-items: center;
+    justify-content: center;
+    margin: 4vh 24vw;
+    .inLogin{
+
+    }
+    .emailInput {
+        @include heightWidth();
+        margin: 1vh 0vw;
+    }
+    .passInput{
+        @include heightWidth();
+        margin: 2vh 0vw;
+    }
+    .loginButton{
+        width: 252px;
+        height: 37px;
+        background-color: #A03037;
+        font-size: 18px;
+    }
+    .midBar{
+        margin: 2vh 5vw;        
+    }
+    .twoButton{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 35px;
+        .fbButton{
+            width: 126px;
+            height: 37px;
+        }
+        .googleButton{
+            width: 119px;
+            height: 37px;
+        }
+    }
+}
