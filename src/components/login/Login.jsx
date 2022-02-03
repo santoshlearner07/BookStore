@@ -1,7 +1,7 @@
 import '../login/Login.scss'
 import React from 'react';
 import { Button } from '@material-ui/core';
-import { userAxios } from '../../services/userSevice';
+import { uLogin } from '../../services/userSevice';
 
 function Login() {
 
@@ -16,7 +16,13 @@ function Login() {
     }
 
     const submit = () =>{
-
+        uLogin(update).then((res)=>{
+            console.log(res)
+            
+        }).catch((err)=>{
+            console.log(err)
+            
+        })
     }
 
 
