@@ -18,7 +18,6 @@ function MainPage() {
                 <img className="mainLogo" src={logo} alt="this is logo"></img>
                 <p className='logoname'>online book shopping</p>
                 <div className='loginSignin'>
-                    {/* <Login /> */}
                     <span className='directLogin' onClick={register}>
                         LOGIN
                     </span>
