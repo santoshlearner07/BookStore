@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
 import '../signup/Signup.scss'
-import { userAxios } from '../../services/userSevice';
+import { registration } from '../../services/userSevice';
 
 function Signup() {
 
@@ -21,7 +21,7 @@ function Signup() {
     }
 
     const submit = () => {
-        userAxios(update).then((res)=>{
+        registration(update).then((res)=>{
             console.log(res)
             
         }).catch((err)=>{
