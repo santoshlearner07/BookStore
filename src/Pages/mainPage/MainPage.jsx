@@ -1,7 +1,6 @@
 import React from 'react';
 import '../mainPage/MainPage.scss'
 import logo from '../../Assests/logo.png'
-import UserDetails from '../../components/userDetails/UserDetails';
 import Login from '../../components/login/Login';
 import Signup from '../../components/signup/Signup';
 
