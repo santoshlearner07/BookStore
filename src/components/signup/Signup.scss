@@ -1,4 +1,4 @@
-$margin: 1vh 0vw;
+$margin: 2.5vh 0vw;
 @mixin widthHeightSignup {
     width: 252px;
     height: 35px;
@@ -6,7 +6,7 @@ $margin: 1vh 0vw;
 .signup {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    margin: 2vh 24vw;
+    margin: 0vh 24vw;
     .fullName {
         @include widthHeightSignup();
         margin: $margin;
@@ -28,6 +28,6 @@ $margin: 1vh 0vw;
         height: 37px;
         background-color: #a03037;
         font-size: 18px;
-        margin: 2vh 0vw;
+        margin: 3vh 0vw;
     }
 }

@@ -53,7 +53,7 @@ function Login() {
 
     return (
         <div className='login'>
-            <TextField style={{ backgroundColor: 'white' }} className="emailInput" type='text' id="outlined-email" label="First Name" variant="outlined"
+            <TextField style={{ backgroundColor: 'white' }} className="emailInput" type='text' id="outlined-email" label="Email Id" variant="outlined"
                 onChange={changeEmail} error={emailError} helperText={emailHelperText} />
             <TextField style={{ backgroundColor: 'white' }} className="passInput" type='password' id="outlined-password" label="Password" variant="outlined"
                 onChange={changePassword} error={passwordError} helperText={passwordHelperText} />

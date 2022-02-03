@@ -5,17 +5,17 @@
 .login {
     justify-items: center;
     justify-content: center;
-    margin: 4vh 24vw;
+    margin: 2vh 24vw;
     .inLogin{
 
     }
     .emailInput {
         @include heightWidth();
-        margin: 1vh 0vw;
+        margin: 0vh 0vw;
     }
     .passInput{
         @include heightWidth();
-        margin: 2vh 0vw;
+        margin: 6vh 0vw;
     }
     .loginButton{
         width: 252px;
