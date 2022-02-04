@@ -1,0 +1,13 @@
+.imageMap{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 10px;
+}
+.settleCenter{
+    // display: flex;
+}
+
+.bookImage{
+    // display: grid;
+    // grid-template-columns: repeat(3,1fr);
+}
