@@ -1,0 +1,136 @@
+.displayBox {
+    background-color: white;
+    display: flex;
+    height: 700px;
+    width: 1050px;
+    .left-container {
+        background-color: aqua;
+        height: 80vh;
+        width: 35%;
+        background-color: white;
+        .imageBox {
+            border: 1px solid #d1d1d1;
+            box-shadow: -1px -1px 4px gray;
+            height: 60%;
+            width: 85%;
+            display: flex;
+            justify-content: center;
+            #hover {
+                padding: 5%;
+                width: 80%;
+                height: 90%;
+            }
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 2vh 3vw 0vh 0vw;
+        }
+    }
+    .right-container {
+        height: 100%;
+        width: 65%;
+        .firstBasic {
+            margin: 0vh 0vw 0vh 2vw;
+            line-height: 2;
+            .title {
+                text-align: left;
+                display: grid;
+                line-height: 2;
+                #bookNamee {
+                    font-size: 23px;
+                    font-weight: 600;
+                    margin: -1.5vh 0vw;
+                    color: #0a0102;
+                }
+                #authorrName {
+                    font-size: 20px;
+                    color: #878787;
+                }
+                .rating {
+                    display: flex;
+                    text-align: center;
+                    #stars {
+                        background-color: #388e3c;
+                        color: white;
+                        letter-spacing: 0px;
+                        font-size: 12px;
+                        width: 30px;
+                    }
+                    #twenty {
+                        color: #878787;
+                        letter-spacing: 0px;
+                        font-size: 10px;
+                    }
+                }
+                .price {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    text-align: center;
+                    width: 75px;
+                    height: auto;
+                    line-height: 3;
+                    #value {
+                        font-weight: bold;
+                        font-size: 25px;
+                    }
+                    #newPrice {
+                        font-weight: bold;
+                        font-size: 28px;
+                    }
+                    #oldPrice {
+                        color: #878787;
+                        font-size: 15px;
+                        text-decoration: line-through;
+                    }
+                }
+            }
+        }
+        .secondBasic {
+            .book-detail {
+                color: #878787;
+                font-size: 20px;
+                margin: 1.5vh 0vw;
+            }
+            .description {
+                font-size: 16px;
+            }
+        }
+        .thirdpart {
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            .feedback {
+                font-size: 18px;
+                font-weight: 500;
+
+            }
+            .rating-div {
+                margin: -1vh 0vw 0vh 0vw;
+                background-color: #F5F5F5;
+                height: 170px;
+                .rating {
+                    font-size: 15px;
+                    font-weight: 450;
+                }
+                .star {
+
+                }
+                .customerReview {
+                    width: 70%;
+                    height: 70px;
+                    border: none;
+                    margin: 0vh 0.5vw;
+                }
+                
+            }
+            .submit{
+                width: 76px;
+                height: 24px;
+                color: white;
+                background-color: #3371B5;
+                margin: -4vh 0vw 0vh 34vw;
+            }
+        }
+    }
+}

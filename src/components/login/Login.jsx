@@ -1,5 +1,6 @@
 import '../login/Login.scss'
 import React from 'react';
+import { Link } from "react-router-dom";
 import { Button, TextField } from '@material-ui/core';
 import { uLogin } from '../../services/userSevice';
 
@@ -58,7 +59,7 @@ function Login() {
             <TextField style={{ backgroundColor: 'white' }} className="passInput" type='password' id="outlined-password" label="Password" variant="outlined"
                 onChange={changePassword} error={passwordError} helperText={passwordHelperText} />
             <br></br>
-            <Button className='loginButton' style={{ backgroundColor: '#A03037' }} onClick={submit} > Login </Button>
+            <Link to="/homepage"> <Button className='loginButton' style={{ backgroundColor: '#A03037' }} onClick={submit} > Login </Button> </Link>
             <p className='midBar'>OR</p>
 
             <div className='twoButton'>

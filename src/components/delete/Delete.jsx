@@ -5,9 +5,9 @@ import uxdesign from '../../Assests/uxdesign.png'
 
 function Delete() {
   return <div>
-<img  className="image" src={thedesign}></img>
-<img  className="image" src={uxdesign}></img>
-      hello
+    <img className="image" src={thedesign}></img>
+    <img className="image" src={uxdesign}></img>
+    hello
   </div>;
 }
 

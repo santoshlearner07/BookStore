@@ -1,7 +1,6 @@
 import React from 'react';
-import Delete from '../delete/Delete';
 import thedesign from '../../Assests/thedesign.png'
-import uxdesign from '../../Assests/uxdesign.png'
+import DisplayBook from '../displayBook/DisplayBook';
 
 import '../card/Card.scss'
 import { getBookApi } from '../../services/axioService';
@@ -25,21 +24,21 @@ function Card() {
         getBookDetails();
     }, [])
 
-    const [open, setOpen] = React.useState(false)
+    // const [open, setOpen] = React.useState(false)
 
     const openImage = (item) => {
-        setViewBook({...viewBook},item)
+        setViewBook({...viewBook,item})
         setSelect(!select)
     }
 
     return (
         <div className='bookValue'>
             {
-                select ? <Delete item={viewBook}/> :
+                select ? <DisplayBook item={viewBook}/> :
                 books.map((item, index) => (
-                    <div className='displayGrid' onClick={()=>openImage(item)}open={open}>
-                        <div className="onlyImage">
-                            <img key={index} className="image" src={thedesign}></img>
+                    <div key={index} className='displayGrid' value={select} >
+                        <div className="onlyImage" onClick={()=>openImage(item)}>
+                            <img className="image" src={thedesign}></img>
                         </div>
                         <div className="title">
                             <span className='bookName'>Book:{item.bookName}</span><br></br>
