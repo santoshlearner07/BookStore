@@ -1,13 +1,16 @@
 import React from 'react';
-import dontmake from '../../Assests/dontmake.png'
+import Delete from '../delete/Delete';
 import thedesign from '../../Assests/thedesign.png'
+import uxdesign from '../../Assests/uxdesign.png'
+
 import '../card/Card.scss'
 import { getBookApi } from '../../services/axioService';
 
 function Card() {
 
-    const [books, setBooks] = React.useState([])
-
+    const [books, setBooks] = React.useState([]);
+    const[select,setSelect] =React.useState(false);
+    const [viewBook, setViewBook] = React.useState({});
 
     const getBookDetails = () => {
         getBookApi().then((res) => {
@@ -22,21 +25,21 @@ function Card() {
         getBookDetails();
     }, [])
 
-const [open,setOpen] = React.useState(false)
+    const [open, setOpen] = React.useState(false)
 
-    const openImage =()=>{
-        setOpen(true)
+    const openImage = (item) => {
+        setViewBook({...viewBook},item)
+        setSelect(!select)
     }
-
 
     return (
         <div className='bookValue'>
             {
+                select ? <Delete item={viewBook}/> :
                 books.map((item, index) => (
-                    <div className='displayGrid' onClick={openImage}
-                    open={open}>
+                    <div className='displayGrid' onClick={()=>openImage(item)}open={open}>
                         <div className="onlyImage">
-                            <img className="image" src={thedesign}></img>
+                            <img key={index} className="image" src={thedesign}></img>
                         </div>
                         <div className="title">
                             <span className='bookName'>Book:{item.bookName}</span><br></br>
