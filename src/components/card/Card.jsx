@@ -1,5 +1,6 @@
 import React from 'react';
 import dontmake from '../../Assests/dontmake.png'
+import thedesign from '../../Assests/thedesign.png'
 import '../card/Card.scss'
 import { getBookApi } from '../../services/axioService';
 
@@ -21,32 +22,36 @@ function Card() {
         getBookDetails();
     }, [])
 
+const [open,setOpen] = React.useState(false)
+
+    const openImage =()=>{
+        setOpen(true)
+    }
+
 
     return (
-        <div className='card'>
+        <div className='bookValue'>
             {
                 books.map((item, index) => (
-                    <div className='displayGrid'>
-                        <div className="book-container">
-                            <img className="image" src={dontmake}></img>
+                    <div className='displayGrid' onClick={openImage}
+                    open={open}>
+                        <div className="onlyImage">
+                            <img className="image" src={thedesign}></img>
                         </div>
-                        <div className="text-containt">
-                            <div className="title">
-                                <span id='title1'>Book name:{item.bookName}</span>
-                                <span id='title2'>Author:{item.author}</span>
-                                <div className="rating">
-                                    <span id='number1'>4.5*</span>
-                                    <span id='number2'>(20)</span>
-                                </div>
-                                <div className="price-container">
-                                    <span id='new-price'>Price:- {item.price} Rs</span>
-                                </div>
+                        <div className="title">
+                            <span className='bookName'>Book:{item.bookName}</span><br></br>
+                            <span className='authorName'>Author:{item.author}</span>
+                            <div className="bookRating">
+                                <span className='star'>4.5*  </span>
+                                <span className='reviewUser'> (20)</span>
+                            </div>
+                            <div className="mainValue">
+                                <span className='value'>Rs:- {item.price}</span>
                             </div>
                         </div>
                     </div>
                 ))
             }
-
         </div>
     )
 }
