@@ -1,10 +1,13 @@
 import '../login/Login.scss'
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Button, TextField } from '@material-ui/core';
 import { uLogin } from '../../services/userSevice';
 
 function Login() {
+
+    let history = new useHistory();
+
     const email = /santoshwalker719@gmail.com/;
     const password = /santosh@W23/;
     const [update, setUpdate] = React.useState({
@@ -45,6 +48,10 @@ function Login() {
         uLogin(update).then((res) => {
             console.log(res)
 
+            localStorage.setItem('token', res.data.result.accessToken)
+            console.log(localStorage.setItem('token', res.data.result.accessToken))
+           
+            history.push('/homepage')
         }).catch((err) => {
             console.log(err)
 
@@ -59,7 +66,7 @@ function Login() {
             <TextField style={{ backgroundColor: 'white' }} className="passInput" type='password' id="outlined-password" label="Password" variant="outlined"
                 onChange={changePassword} error={passwordError} helperText={passwordHelperText} />
             <br></br>
-            <Link to="/homepage"> <Button className='loginButton' style={{ backgroundColor: '#A03037' }} onClick={submit} > Login </Button> </Link>
+            <Button className='loginButton' style={{ backgroundColor: '#A03037' }} onClick={submit} > Login </Button>
             <p className='midBar'>OR</p>
 
             <div className='twoButton'>
