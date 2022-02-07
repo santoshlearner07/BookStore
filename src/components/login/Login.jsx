@@ -49,7 +49,7 @@ function Login() {
             console.log(res)
 
             localStorage.setItem('token', res.data.result.accessToken)
-            console.log(localStorage.setItem('token', res.data.result.accessToken))
+            console.log( "this is token" + localStorage.setItem('token', res.data.result.accessToken))
            
             history.push('/homepage')
         }).catch((err) => {
