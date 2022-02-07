@@ -3,8 +3,6 @@ import Home from './Pages/home/Home';
 import {
   BrowserRouter, Route, Switch
 } from 'react-router-dom';
-import Book from './components/book/Book';
-import Card from './components/card/Card';
 import MainPage from './Pages/mainPage/MainPage';
 import DisplayBook from './components/displayBook/DisplayBook';
 

@@ -24,7 +24,6 @@ function Card() {
         getBookDetails();
     }, [])
 
-    // const [open, setOpen] = React.useState(false)
 
     const openImage = (item) => {
         setViewBook({...viewBook,item})
@@ -36,7 +35,7 @@ function Card() {
             {
                 select ? <DisplayBook item={viewBook}/> :
                 books.map((item, index) => (
-                    <div key={index} className='displayGrid' value={select} >
+                    <div  className='displayGrid'  >
                         <div className="onlyImage" onClick={()=>openImage(item)}>
                             <img className="image" src={thedesign}></img>
                         </div>

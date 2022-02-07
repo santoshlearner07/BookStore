@@ -7,9 +7,6 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 
 function DisplayBook(props) {
 
-    const [upBook, setUpBook] = React.useState(false)
-    console.log(props.item.item);
-
     return (
         <div className="displayBox">
             <div className='left-container'>
