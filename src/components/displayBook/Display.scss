@@ -25,6 +25,9 @@
             display: flex;
             justify-content: space-evenly;
             margin: 2vh 3vw 0vh 0vw;
+            .buttonUse{
+                display: flex;
+            }
         }
     }
     .right-container {

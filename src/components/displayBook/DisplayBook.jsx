@@ -4,15 +4,15 @@ import '../displayBook/Display.scss'
 import StarBorderPurple500OutlinedIcon from '@mui/icons-material/StarBorderPurple500Outlined';
 import { Button } from '@material-ui/core'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { addToCartApi } from '../../services/axioService';
-
+import { addToCartApi, getCartItemApi,cartItemQuantity } from '../../services/axioService';
 
 
 function DisplayBook(props) {
 
     const [addBook, setAddBook] = React.useState([]);
-    const [stock, setStock] = React.useState(0)
-
+    const [quantity, setQuantity] = React.useState(0);
+    const [filterArray,setFilterArray] = React.useState([]);
+    const [cardIdDetails,setCartIdDetails] = React.useState([]);
 
 
     const bookId = (_id) => {
@@ -26,12 +26,59 @@ function DisplayBook(props) {
     }
 
     const bookDecrement = () => {
-
+        let data = {
+            "quantityToBuy": quantity - 1,
+          };
+        
+          cartItemQuantity(data)
+            .then((res) => {
+                console.log(res)
+                showCartItem();
+                console.log("Show Cart - Item")
+            }).catch((err) => {
+                console.log(err)
+            })
     }
 
     const bookIncrement = () => {
-
+        let data = {
+            "quantityToBuy": quantity + 1,
+            "_id": cardIdDetails
+          };
+        
+          cartItemQuantity(data)
+            .then((res) => {
+                console.log(res)
+                showCartItem();
+                console.log("Show Cart + Item")
+            }).catch((err) => {
+                console.log(err)
+            })
     }
+
+    const showCartItem = () => {
+        getCartItemApi()
+            .then((res) => {
+                console.log(res)
+                let filterData = res.data.result.filter((cart) => {
+                    if(props.item.item._id === cart.product_id._id){
+                        setQuantity(cart.quantityToBuy)
+                        setCartIdDetails(cart.product_id._id)
+                        return cart;
+                    }
+                }) 
+                setFilterArray(filterData);
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+    
+    React.useEffect(() => {
+        showCartItem();
+    }, [quantity]);
+
+    console.log(filterArray)
 
     return (
         <div className="displayBox">
@@ -41,17 +88,26 @@ function DisplayBook(props) {
                     <img id="hover" src={thedesign}></img>
                 </div>
                 <div className='buttons'>
-                    {addBook.length === 0 ? (
-                        <Button className='bagButton' style={{ backgroundColor: '#A03037', color: 'white' }} variant="contained"
-                            onClick={() => bookId(props.item.item._id)}>ADD TO BAG
-                        </Button>
-                    ) : (
-                        <div>
-                            <Button onClick={bookDecrement}>-</Button>
-                            <Button> {stock} </Button>
-                            <Button onClick={bookIncrement}>+</Button>
-                        </div>
-                    )}
+
+                    {
+                        filterArray.length === 0 ? (
+                            <Button className='bagButton' style={{ backgroundColor: '#A03037', color: 'white' }} variant="contained"
+                                onClick={() => bookId(props.item.item._id)}>
+                                    ADD TO BAG
+                            </Button>
+                        ) : (
+                            <div className='buttonUse'>
+
+                                <Button className='minus' onClick={bookDecrement} id={props.item.item._id}
+                                >-</Button>
+                                <Button> {quantity} </Button>
+                                <Button className='plus' onClick={bookIncrement} id={props.item.item._id}
+                                >+</Button>
+
+                            </div>
+                        )
+                    }
+
                     <Button className='wishlistB' style={{ backgroundColor: '#333333', color: 'white' }} variant="contained"
                     > <FavoriteBorderOutlinedIcon /> WISHLIST
                     </Button>
