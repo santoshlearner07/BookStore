@@ -26,7 +26,7 @@ export const getCartItemApi = async () =>{
   return response;
 }
 
-export const cartItemQuantity = async (data) =>{
-  let response = await axios.put(`${baseUrl}cart_item_quantity/${data._id}`,data,headerConfig)
+export const cartItemQuantity = async (id,data) =>{
+  let response = await axios.put(`${baseUrl}cart_item_quantity/${id}`,data,headerConfig)
   return response;
 }

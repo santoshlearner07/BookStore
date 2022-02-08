@@ -3,6 +3,7 @@ import React from 'react';
 import { getBookApi } from '../../services/axioService';
 import Card from '../card/Card';
 
+
 function Book() {
 
     const [update, setUpdate] = React.useState([]);
@@ -28,7 +29,7 @@ function Book() {
                 <p className="books">Books </p>
                 <p className="item"> (128 items)</p>
                 <select name="sort by relevance" className="priceValue">
-                <option value="priceValue">Sort by relevance</option>
+                    <option value="priceValue">Sort by relevance</option>
                     <option value="lowPrice">Price:Low to high</option>
                     <option value="highPrice">Price:High to low</option>
                     <option value="newPrice">Newest arrivals</option>
@@ -39,7 +40,6 @@ function Book() {
                 <Card />
 
             </div>
-
         </div>
     )
 }

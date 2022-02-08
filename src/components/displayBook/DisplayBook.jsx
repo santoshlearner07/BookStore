@@ -6,6 +6,9 @@ import { Button } from '@material-ui/core'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { addToCartApi, getCartItemApi,cartItemQuantity } from '../../services/axioService';
 
+import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
+import RemoveCircleOutlineTwoToneIcon from '@mui/icons-material/RemoveCircleOutlineTwoTone';
+
 
 function DisplayBook(props) {
 
@@ -30,7 +33,7 @@ function DisplayBook(props) {
             "quantityToBuy": quantity - 1,
           };
         
-          cartItemQuantity(data)
+          cartItemQuantity(cardIdDetails,data)
             .then((res) => {
                 console.log(res)
                 showCartItem();
@@ -43,10 +46,10 @@ function DisplayBook(props) {
     const bookIncrement = () => {
         let data = {
             "quantityToBuy": quantity + 1,
-            "_id": cardIdDetails
+            // "_id": cardIdDetails
           };
         
-          cartItemQuantity(data)
+          cartItemQuantity(cardIdDetails,data)
             .then((res) => {
                 console.log(res)
                 showCartItem();
@@ -63,7 +66,7 @@ function DisplayBook(props) {
                 let filterData = res.data.result.filter((cart) => {
                     if(props.item.item._id === cart.product_id._id){
                         setQuantity(cart.quantityToBuy)
-                        setCartIdDetails(cart.product_id._id)
+                        setCartIdDetails(cart._id)
                         return cart;
                     }
                 }) 
@@ -99,10 +102,10 @@ function DisplayBook(props) {
                             <div className='buttonUse'>
 
                                 <Button className='minus' onClick={bookDecrement} id={props.item.item._id}
-                                >-</Button>
+                                > <RemoveCircleOutlineTwoToneIcon /> </Button>
                                 <Button> {quantity} </Button>
                                 <Button className='plus' onClick={bookIncrement} id={props.item.item._id}
-                                >+</Button>
+                                > <AddCircleOutlineTwoToneIcon /> </Button>
 
                             </div>
                         )
