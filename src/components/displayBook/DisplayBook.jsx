@@ -14,7 +14,6 @@ import RemoveCircleOutlineTwoToneIcon from '@mui/icons-material/RemoveCircleOutl
 
 function DisplayBook(props) {
 
-    const [addBook, setAddBook] = React.useState([]);
     const [quantity, setQuantity] = React.useState(0);
     const [filterArray, setFilterArray] = React.useState([]);
     const [cardIdDetails, setCartIdDetails] = React.useState([]);
@@ -25,6 +24,7 @@ function DisplayBook(props) {
         console.log(_id)
         addToCartApi(props.item.item._id).then((res) => {
             console.log(res)
+            showCartItem();
             console.log("Add to bag working")
         }).catch((err) => {
             console.log(err)
@@ -143,11 +143,11 @@ function DisplayBook(props) {
                         addWishList.length === 0 ? (
 
                             <Button className='wishlistB' style={{ backgroundColor: '#333333', color: 'white' }} variant="contained"
-                                onClick={() => wishList(props.item.item._id)}  > <FavoriteBorderOutlinedIcon /> WISHLIST
+                                onClick={() => wishList(props.item.item._id)} id={props.item.item._id} > <FavoriteBorderOutlinedIcon /> WISHLIST
                             </Button>
                         ) : (
                             <div>
-                                <Button className='wishlistB' style={{ backgroundColor: '#333333', color: 'white' }} variant="contained">
+                                <Button className='wishlistB' id={props.item.item._id} style={{ backgroundColor: '#333333', color: 'white' }} variant="contained">
                                     Added to  WISHLIST
                                 </Button>
                             </div>

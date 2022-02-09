@@ -3,16 +3,42 @@ import '../wishList/WishList.scss'
 import Header from '../header/Header'
 import thedesign from '../../Assests/thedesign.png'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import {
+	getWishListApi, deleteBookApi
+} from '../../services/axioService';
 
 
 function WishList() {
 
 	const [getWishList, setGetWishList] = React.useState([]);
+	const [deleteBooks, setDeleteBooks] = React.useState(false);
 
-	const deleteBook = () => {
-
+	const fetchWishItems = () => {
+		getWishListApi()
+			.then((res) => {
+				// console.log(res)
+				setGetWishList(res.data.result)
+			})
+			.catch((err) => {
+				console.log(err)
+			})
 	}
 
+	const deleteBook = (id) => {
+		deleteBookApi(id)
+			.then((res) => {
+				console.log(res)
+				setDeleteBooks(!deleteBooks)
+				console.log("Delete Api working")
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}
+
+	React.useEffect(() => {
+		fetchWishItems();
+	}, [deleteBooks])
 
 	return (
 		<div>
@@ -41,7 +67,7 @@ function WishList() {
 									<div className='imgAndInfo'>
 										<div className='bookImgCont'>
 											<div className='bookImg'>
-											<img src={thedesign}></img>
+												<img className='theImage' src={thedesign}></img>
 											</div>
 										</div>
 										<div className='bookInfo'>

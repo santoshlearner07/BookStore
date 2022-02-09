@@ -40,3 +40,8 @@ export const getWishListApi = async()=>{
   let response = await axios.get(`${baseUrl}get_wishlist_items`,headerConfig)
   return response;
 }
+
+export const deleteBookApi = async(id)=>{
+  let response  = await axios.delete(`${baseUrl}remove_wishlist_item/${id}`,headerConfig)
+  return response;
+}
