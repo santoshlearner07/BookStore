@@ -4,7 +4,7 @@ import '../displayBook/Display.scss'
 import StarBorderPurple500OutlinedIcon from '@mui/icons-material/StarBorderPurple500Outlined';
 import { Button } from '@material-ui/core'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { addToCartApi, getCartItemApi,cartItemQuantity } from '../../services/axioService';
+import { addToCartApi, getCartItemApi,cartItemQuantity,addWishListApi } from '../../services/axioService';
 
 import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
 import RemoveCircleOutlineTwoToneIcon from '@mui/icons-material/RemoveCircleOutlineTwoTone';
@@ -16,6 +16,7 @@ function DisplayBook(props) {
     const [quantity, setQuantity] = React.useState(0);
     const [filterArray,setFilterArray] = React.useState([]);
     const [cardIdDetails,setCartIdDetails] = React.useState([]);
+    const [addWishList, setAddWishList] = React.useState([]);
 
 
     const bookId = (_id) => {
@@ -23,6 +24,16 @@ function DisplayBook(props) {
         addToCartApi(props.item.item._id).then((res) => {
             console.log(res)
             console.log("Add to bag working")
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
+    const wishList = (_id) =>{
+        console.log(_id)
+        addWishListApi(props.item.item._id).then((res) => {
+            console.log(res)
+            console.log("Add to wishlist working")
         }).catch((err) => {
             console.log(err)
         })
@@ -112,7 +123,7 @@ function DisplayBook(props) {
                     }
 
                     <Button className='wishlistB' style={{ backgroundColor: '#333333', color: 'white' }} variant="contained"
-                    > <FavoriteBorderOutlinedIcon /> WISHLIST
+                     onClick={() => wishList(props.item.item._id)}  > <FavoriteBorderOutlinedIcon /> WISHLIST
                     </Button>
 
                 </div>

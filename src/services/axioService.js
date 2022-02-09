@@ -30,3 +30,8 @@ export const cartItemQuantity = async (id,data) =>{
   let response = await axios.put(`${baseUrl}cart_item_quantity/${id}`,data,headerConfig)
   return response;
 }
+
+export const addWishListApi = async(data)=>{
+  let response = await axios.post(`${baseUrl}add_wish_list/${data}`,data,headerConfig)
+  return response;
+}
