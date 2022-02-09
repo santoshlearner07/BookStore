@@ -4,7 +4,9 @@ import '../displayBook/Display.scss'
 import StarBorderPurple500OutlinedIcon from '@mui/icons-material/StarBorderPurple500Outlined';
 import { Button } from '@material-ui/core'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { addToCartApi, getCartItemApi,cartItemQuantity,addWishListApi } from '../../services/axioService';
+import {
+    addToCartApi, getCartItemApi, cartItemQuantity, addWishListApi, getWishListApi
+} from '../../services/axioService';
 
 import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
 import RemoveCircleOutlineTwoToneIcon from '@mui/icons-material/RemoveCircleOutlineTwoTone';
@@ -14,8 +16,8 @@ function DisplayBook(props) {
 
     const [addBook, setAddBook] = React.useState([]);
     const [quantity, setQuantity] = React.useState(0);
-    const [filterArray,setFilterArray] = React.useState([]);
-    const [cardIdDetails,setCartIdDetails] = React.useState([]);
+    const [filterArray, setFilterArray] = React.useState([]);
+    const [cardIdDetails, setCartIdDetails] = React.useState([]);
     const [addWishList, setAddWishList] = React.useState([]);
 
 
@@ -29,10 +31,11 @@ function DisplayBook(props) {
         })
     }
 
-    const wishList = (_id) =>{
+    const wishList = (_id) => {
         console.log(_id)
         addWishListApi(props.item.item._id).then((res) => {
             console.log(res)
+            showWishListItem()
             console.log("Add to wishlist working")
         }).catch((err) => {
             console.log(err)
@@ -42,9 +45,9 @@ function DisplayBook(props) {
     const bookDecrement = () => {
         let data = {
             "quantityToBuy": quantity - 1,
-          };
-        
-          cartItemQuantity(cardIdDetails,data)
+        };
+
+        cartItemQuantity(cardIdDetails, data)
             .then((res) => {
                 console.log(res)
                 showCartItem();
@@ -57,10 +60,9 @@ function DisplayBook(props) {
     const bookIncrement = () => {
         let data = {
             "quantityToBuy": quantity + 1,
-            // "_id": cardIdDetails
-          };
-        
-          cartItemQuantity(cardIdDetails,data)
+        };
+
+        cartItemQuantity(cardIdDetails, data)
             .then((res) => {
                 console.log(res)
                 showCartItem();
@@ -75,24 +77,40 @@ function DisplayBook(props) {
             .then((res) => {
                 console.log(res)
                 let filterData = res.data.result.filter((cart) => {
-                    if(props.item.item._id === cart.product_id._id){
+                    if (props.item.item._id === cart.product_id._id) {
                         setQuantity(cart.quantityToBuy)
                         setCartIdDetails(cart._id)
                         return cart;
                     }
-                }) 
+                })
                 setFilterArray(filterData);
             })
             .catch((err) => {
                 console.log(err)
             })
     }
-    
+
+    const showWishListItem = () =>{
+        getWishListApi()
+        .then((res)=>{
+            console.log(res)
+            let wishListArray = res.data.result.filter((wishlists)=>{
+                if (props.item.item._id === wishlists.product_id.id){
+                    console.log( "wishListAray-> " + wishlists.product_id.id)
+                }
+            })
+            setAddWishList(wishListArray)
+            console.log("Inside wisihlistitem")
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+
     React.useEffect(() => {
         showCartItem();
+        showWishListItem();
     }, [quantity]);
-
-    console.log(filterArray)
 
     return (
         <div className="displayBox">
@@ -107,7 +125,7 @@ function DisplayBook(props) {
                         filterArray.length === 0 ? (
                             <Button className='bagButton' style={{ backgroundColor: '#A03037', color: 'white' }} variant="contained"
                                 onClick={() => bookId(props.item.item._id)}>
-                                    ADD TO BAG
+                                ADD TO BAG
                             </Button>
                         ) : (
                             <div className='buttonUse'>
@@ -121,10 +139,22 @@ function DisplayBook(props) {
                             </div>
                         )
                     }
+                    {
+                        addWishList.length === 0 ? (
 
-                    <Button className='wishlistB' style={{ backgroundColor: '#333333', color: 'white' }} variant="contained"
-                     onClick={() => wishList(props.item.item._id)}  > <FavoriteBorderOutlinedIcon /> WISHLIST
-                    </Button>
+                            <Button className='wishlistB' style={{ backgroundColor: '#333333', color: 'white' }} variant="contained"
+                                onClick={() => wishList(props.item.item._id)}  > <FavoriteBorderOutlinedIcon /> WISHLIST
+                            </Button>
+                        ) : (
+                            <div>
+                                <Button className='wishlistB' style={{ backgroundColor: '#333333', color: 'white' }} variant="contained">
+                                    Added to  WISHLIST
+                                </Button>
+                            </div>
+                        )
+
+                    }
+
 
                 </div>
 

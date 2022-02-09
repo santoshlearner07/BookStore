@@ -35,3 +35,8 @@ export const addWishListApi = async(data)=>{
   let response = await axios.post(`${baseUrl}add_wish_list/${data}`,data,headerConfig)
   return response;
 }
+
+export const getWishListApi = async()=>{
+  let response = await axios.get(`${baseUrl}get_wishlist_items`,headerConfig)
+  return response;
+}
