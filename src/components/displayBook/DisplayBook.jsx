@@ -2,6 +2,7 @@ import React from 'react'
 import thedesign from '../../Assests/thedesign.png'
 import '../displayBook/Display.scss'
 import StarBorderPurple500OutlinedIcon from '@mui/icons-material/StarBorderPurple500Outlined';
+import { useHistory } from "react-router-dom";
 import { Button } from '@material-ui/core'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import {
@@ -13,6 +14,9 @@ import RemoveCircleOutlineTwoToneIcon from '@mui/icons-material/RemoveCircleOutl
 
 
 function DisplayBook(props) {
+
+	let history = new useHistory();
+
 
     const [quantity, setQuantity] = React.useState(0);
     const [filterArray, setFilterArray] = React.useState([]);
@@ -36,6 +40,7 @@ function DisplayBook(props) {
         addWishListApi(props.item.item._id).then((res) => {
             console.log(res)
             showWishListItem()
+            history.push('/wishlist')
             console.log("Add to wishlist working")
         }).catch((err) => {
             console.log(err)

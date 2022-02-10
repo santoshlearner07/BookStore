@@ -6,6 +6,7 @@ import {
 import MainPage from './Pages/mainPage/MainPage';
 import DisplayBook from './components/displayBook/DisplayBook';
 import WishList from './components/wishList/WishList';
+import Cart from './components/cart/Cart';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/homepage' component={Home} />
         <Route path='/displayPage' component={DisplayBook} />
         <Route path='/wishlist' component={WishList} />
+        <Route path='/cart' component={Cart} />
 
       </Switch>
     </BrowserRouter>

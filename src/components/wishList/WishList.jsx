@@ -2,6 +2,8 @@ import React from 'react'
 import '../wishList/WishList.scss'
 import Header from '../header/Header'
 import thedesign from '../../Assests/thedesign.png'
+import { useHistory } from "react-router-dom";
+
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import {
 	getWishListApi, deleteBookApi
@@ -9,6 +11,8 @@ import {
 
 
 function WishList() {
+
+	let history = new useHistory();
 
 	const [getWishList, setGetWishList] = React.useState([]);
 	const [deleteBooks, setDeleteBooks] = React.useState(false);
@@ -36,6 +40,11 @@ function WishList() {
 			})
 	}
 
+	const home =()=>{
+		history.push('/homepage')
+	}
+
+
 	React.useEffect(() => {
 		fetchWishItems();
 	}, [deleteBooks])
@@ -46,7 +55,7 @@ function WishList() {
 			<div className='wishListMain'>
 				<div className='wishListInner'>
 					<div className='header' style={{ paddingRight: "490px" }}>
-						<span
+						<span onClick={home}
 							style={{
 								color: '#9D9D9D',
 								marginRight: '3px',
