@@ -41,7 +41,17 @@ export const getWishListApi = async()=>{
   return response;
 }
 
+export const removeCartItemApi = async(id)=>{
+  let response = await axios.delete(`${baseUrl}remove_cart_item/${id}`)
+  return response;
+}
+
 export const deleteBookApi = async(id)=>{
   let response  = await axios.delete(`${baseUrl}remove_wishlist_item/${id}`,headerConfig)
+  return response;
+}
+
+export const editCustomerDetailsApi = async(data)=>{
+  let response = await axios.put(`${baseUrl}edit_user`,data,headerConfig)
   return response;
 }

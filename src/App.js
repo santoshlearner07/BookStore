@@ -7,6 +7,8 @@ import MainPage from './Pages/mainPage/MainPage';
 import DisplayBook from './components/displayBook/DisplayBook';
 import WishList from './components/wishList/WishList';
 import Cart from './components/cart/Cart';
+import CustomerDetails from './components/customerDetails/CustomerDetails';
+import OrderDone from './components/orderDone/OrderDone';
 
 
 function App() {
@@ -18,6 +20,10 @@ function App() {
         <Route path='/displayPage' component={DisplayBook} />
         <Route path='/wishlist' component={WishList} />
         <Route path='/cart' component={Cart} />
+        <Route path='/customerdetails' component={CustomerDetails} />
+        <Route path='/orderdone' component={OrderDone} />
+        
+
 
       </Switch>
     </BrowserRouter>
