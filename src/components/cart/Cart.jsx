@@ -1,6 +1,9 @@
 import React from 'react'
 import Header from '../header/Header'
 import thedesign from '../../Assests/thedesign.png'
+import { useHistory } from "react-router-dom";
+import Footer from '../footer/Footer';
+
 import { Button } from '@material-ui/core'
 import {
     cartItemQuantity, getCartItemApi, removeCartItemApi
@@ -21,8 +24,8 @@ function Cart() {
     const [openOrderSummery, setOpenOrderSummery] = React.useState(false);
     const [quantity, setQuantity] = React.useState([filterArray.quantityToBuy]);
 
-    // const bookQuantity= React.useRef(null)
-    // console.log(bookQuantity.current.value)
+    let history = new useHistory();
+
     const deleteCartItem = (id) => {
         console.log(id)
         console.log(filterArray)
@@ -37,7 +40,7 @@ function Cart() {
         console.log(quantity)
         console.log("removed")
         let data = {
-            "quantityToBuy": quantity * 0,
+            "quantityToBuy": quantity - quantity,
         };
 
         removeCartItemApi(cardIdDetails, data)
@@ -50,9 +53,6 @@ function Cart() {
                 console.log(err)
             })
     }
-
-
-
 
     const bookDecrementItem = (id) => {
         console.log(id)
@@ -114,14 +114,6 @@ function Cart() {
         getCartItemApi()
             .then((res) => {
                 console.log(res)
-                // console.log([res.data.result.quantityToBuy])
-                // let filterCartId = filterArray.filter((cart) =>{
-                //         if(cart.product_id._id === cart.product_id._id){
-                //             setQuantity(cart.quantityToBuy)
-                //             setCartIdDetails(cart._id)
-                //             return cart;
-                //         }
-                //     })
                 setFilterArray(res.data.result);
 
 
@@ -131,18 +123,6 @@ function Cart() {
             })
     }
 
-    // const deleteCartItem = (id) => {
-    //     console.log("remove")
-    //     removeCartItemApi(id)
-    //         .then((res) => {
-    //             console.log(res)
-    //             showCartItem();
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         })
-    // }
-
     const orderPlaced = () => {
         setOpenAddress(!openAddress)
     }
@@ -151,7 +131,9 @@ function Cart() {
         setOpenOrderSummery(openOrderSummery)
     }
 
-
+    const home = () => {
+        history.push('/homepage')
+    }
 
     React.useEffect(() => {
         showCartItem();
@@ -161,19 +143,23 @@ function Cart() {
             <Header />
             <div className='wholeCart'>
                 <div className='homeLine'>
-                    <p>Home / </p>
+                    <p onClick={home}
+                        style={{
+                            color: '#9D9D9D',
+                            cursor: 'pointer',
+                        }}>Home / </p>
                     <p>My cart</p>
                 </div>
                 <div className='bookDetailsBox'>
                     <div className='firstLine'>
-                        <p className='cart'>My cart ({filterArray.length -1}) </p>
+                        <p className='cart'>My cart ({filterArray.length - 1}) </p>
                         <location className='location'>
                             <div className='bridgeLabz'>
                                 <LocationOnTwoToneIcon /> BridgeLabz Solutions LLP, No...
                             </div>
                         </location>
                     </div>
-                    <div>
+                    <div className='cartMap'>
                         {
                             filterArray.filter(item => item.product_id !== null).map((item, index) => (
 
@@ -181,18 +167,18 @@ function Cart() {
                                     <div>
                                         <img className='theImage' src={thedesign}></img>
                                     </div>
-                                    <div>
+                                    <div className='mainCartBook'>
                                         <div className='cartBookDetails'>
                                             <span className='cartTitle'>
                                                 {item.product_id.bookName}
                                             </span> <br></br>
-                                            <span className='cartAuthor'>by
+                                            <span className='cartAuthor'>by-
                                                 {item.product_id.author}
                                             </span> <br></br>
                                             <span className='cartNewPrice'>
-                                                {item.product_id.discountPrice}
+                                              Rs. {item.product_id.discountPrice}
                                             </span><br></br>
-                                            <span className='cartOldPrice'>rs2000</span> <br></br>
+                                            <span className='cartOldPrice'>({item.product_id.price})</span> <br></br>
                                         </div>
                                         <div className='buttonFour'>
 
@@ -200,9 +186,6 @@ function Cart() {
                                             > <RemoveCircleOutlineTwoToneIcon /> </Button>
 
                                             <Button> {item.quantityToBuy} </Button>
-                                            {/* <Button> ref ={bookQuantity} defaultValue{item.quantityToBuy} </Button> */}
-                                            {/* <input type='text' ref ={bookQuantity} defaultValue={item.quantityToBuy}  />   */}
-                                            {/* <Button ref ={bookQuantity} defaultValue={item.quantityToBuy}/> */}
 
                                             <Button className='plus' onClick={() => bookIncrementItem(item)}
                                             > <AddCircleOutlineTwoToneIcon /> </Button>
@@ -222,10 +205,13 @@ function Cart() {
 
                 <div className='address'>
                     {!openAddress ? (
-                        <div>
-                            <div className='details'>
-                                Address Details
+                        <div className='addressdefauls'>
+                            <div className='detailMain'>
+                                <div className='details'>
+                                    Address Details
+                                </div>
                             </div>
+
                             <div className='order'>
                                 <div className='summary'>
                                     Order summary
@@ -236,11 +222,12 @@ function Cart() {
                     ) : (
                         <CustomerDetails continueOrder={continueOrder} />
                     )}
-
-
                 </div>
 
 
+            </div>
+            <div className='footer'>
+                <Footer />
             </div>
         </div>
     )

@@ -82,7 +82,7 @@ function CustomerDetails(props) {
                     <FormLabel style={{ paddingRight: "250px" }} component="legend">
                         Type
                     </FormLabel>
-                    <RadioGroup
+                    <RadioGroup className='typesss'
                         row
                         aria-label="gender"
                         name="row-radio-buttons-group"
@@ -170,9 +170,6 @@ function CustomerDetails(props) {
                 <div className='summaryy'>
                     Order summary
                 </div>
-            </div>
-            <div>
-                <Footer />
             </div>
         </div>
     );
