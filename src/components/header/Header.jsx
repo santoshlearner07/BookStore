@@ -4,8 +4,16 @@ import book from '../../Assests/book.png'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import PermIdentityTwoToneIcon from '@mui/icons-material/PermIdentityTwoTone';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { useHistory } from "react-router-dom";
 
 function Header() {
+
+    let history = useHistory();
+
+    const clickCart =() =>{
+        history.push('/cart')
+    }
+
     return (
         <div className='homePage'>
             <div className='homeHeader'>
@@ -21,7 +29,7 @@ function Header() {
                         Santosh
                     </div>
                 </div>
-                <div className='shoppingCart'>
+                <div className='shoppingCart' onClick={clickCart} >
                     <ShoppingCartOutlinedIcon />
                     Cart
                 </div>

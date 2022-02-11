@@ -27,6 +27,8 @@ export const getCartItemApi = async () =>{
 }
 
 export const cartItemQuantity = async (id,data) =>{
+  console.log(data)
+  console.log(id)
   let response = await axios.put(`${baseUrl}cart_item_quantity/${id}`,data,headerConfig)
   return response;
 }
@@ -42,7 +44,7 @@ export const getWishListApi = async()=>{
 }
 
 export const removeCartItemApi = async(id)=>{
-  let response = await axios.delete(`${baseUrl}remove_cart_item/${id}`)
+  let response = await axios.delete(`${baseUrl}remove_cart_item/${id}`,headerConfig)
   return response;
 }
 

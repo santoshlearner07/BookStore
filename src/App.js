@@ -9,6 +9,7 @@ import WishList from './components/wishList/WishList';
 import Cart from './components/cart/Cart';
 import CustomerDetails from './components/customerDetails/CustomerDetails';
 import OrderDone from './components/orderDone/OrderDone';
+import orderSummary from './components/summary/orderSummary'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/cart' component={Cart} />
         <Route path='/customerdetails' component={CustomerDetails} />
         <Route path='/orderdone' component={OrderDone} />
+        <Route path='/ordersummary' component={orderSummary} />
         
 
 
