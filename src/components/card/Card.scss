@@ -62,3 +62,23 @@
         }
     }
 }
+
+@media screen and (max-width: 420px) {
+    .bookValue {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2vh 1vw;
+        margin: 0vh 16vw;
+        width: 235px;
+        height: 275px;
+        box-shadow: -1px -1px 4px gray;
+        border: lightgray;
+        .displayGrid {
+            border: lightgray;
+            box-shadow: -1px -1px 4px gray;
+            width: 235px;
+            height: 275px;
+            border-radius: 4px;
+        }
+    }
+}

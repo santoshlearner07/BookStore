@@ -29,6 +29,7 @@ function DisplayBook(props) {
         addToCartApi(props.item.item._id).then((res) => {
             console.log(res)
             showCartItem();
+            history.push('/cart')
             console.log("Add to bag working")
         }).catch((err) => {
             console.log(err)

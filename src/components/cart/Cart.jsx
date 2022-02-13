@@ -138,31 +138,31 @@ function Cart() {
 
     const checkoutOrder = () => {
 
-            history.push('/orderdone')
 
-        // let array_ordered_books = [];
+        let array_ordered_books = [];
 
-        // filterArray.map((element) => {
-        //     let ordered_book = {
-        //         product_id: element._id,
-        //         product_name: element.product_id.bookName,
-        //         product_quantity: element.quantityToBuy,
-        //         product_price: element.product_id.price,
-        //     };
-        //     return array_ordered_books.push(ordered_book);
-        // });
+        filterArray.filter(item => item._id !== '6203ba91f5d029000e43ad01').map((element) => {
+            let ordered_book = {
+                product_id: element._id,
+                product_name: element.bookName,
+                product_quantity: element.quantityToBuy,
+                product_price: element.price,
+            };
+            console.log(element._id)
+            return array_ordered_books.push(ordered_book);
+        });
 
-        // let orderObj = {
-        //     orders: array_ordered_books,
-        // };
-        // orderDetailsApi(orderObj)
-        //     .then((response) => {
-        //         console.log(response.data.message, "order items", response.data.result);
-        //         // history.push("/Homepage/Book/Cart/Orderplaced");
-        //     })
-        //     .catch((err) => {
-        //         console.warn(err);
-        //     });
+        let orderObj = {
+            orders: array_ordered_books,
+        };
+        orderDetailsApi(orderObj)
+            .then((response) => {
+                console.log(response.data.message, "order items", response.data.result);
+                history.push('/orderdone')
+            })
+            .catch((err) => {
+                console.warn(err);
+            });
     };
 
 
