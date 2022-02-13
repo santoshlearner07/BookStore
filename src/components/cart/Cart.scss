@@ -44,7 +44,7 @@
                             font-size: 13px;
                         }
                     }
-                    .buttonFour{
+                    .buttonFour {
                         margin: 0vh -1vw;
                     }
                 }
@@ -80,6 +80,45 @@
                 }
             }
         }
+    }
+    .OrderDetailContainer2 {
+        margin: 1.5vh 0vw;
+        .orderSummeryContainer {
+            border: 1px solid black;
+            padding: 10px;
+            .txt {
+                font-size: 20px ;
+                font-weight: 600;
+                margin: 2vh 0vw 2vh 2vw;
+            }
+            .bookImgAddDetails {
+                display: flex;
+                .bookImgDiv {
+                    .theImage {
+                        margin: 1vh 1.5vw;
+                    }
+                }
+                .bookDetailsDiv-text {
+                    margin: 2vh 0vw;
+                    .bookName {
+                        font-size: 20px;
+                    }
+                    .author {
+                        font-size: 13px;
+                    }
+                    .discountPrice {
+                        font-size: 18px;
+                    }
+                    .price {
+                        font-size: 13px;
+                    }
+                }
+            }
+            .checkout-btn{
+                margin: 0vh 0vw 0vh 65vw;
+            }
+        }
+
     }
 }
 .footer {

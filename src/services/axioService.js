@@ -57,3 +57,9 @@ export const editCustomerDetailsApi = async(data)=>{
   let response = await axios.put(`${baseUrl}edit_user`,data,headerConfig)
   return response;
 }
+
+export const orderDetailsApi = async(data)=>{
+  let response = await axios.post(`${baseUrl}add/order`,data,headerConfig)
+  return response;
+}
+

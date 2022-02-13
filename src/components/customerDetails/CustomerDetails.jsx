@@ -10,13 +10,13 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import Footer from '../footer/Footer';
-import Button from "@mui/material/Button";
-
-
 
 function CustomerDetails(props) {
+    const [filterArray, setFilterArray] = React.useState([]);
+
     const [customer, setCustomerdata] = React.useState([]);
+    const [openOrderSummery, setOpenOrderSummery] = React.useState(false);
+
     const [address, setAddress] = React.useState("");
     const [city, setCity] = React.useState("");
     const [state, setState] = React.useState("");
@@ -64,6 +64,10 @@ function CustomerDetails(props) {
             });
     };
 
+
+    const continueOrder = () => {
+        setOpenOrderSummery(!openOrderSummery)
+    }
 
     React.useEffect(() => {
         loadCustomerdata();
@@ -165,12 +169,11 @@ function CustomerDetails(props) {
                     <p onClick={() => props.continueOrder(true)}>CONTINUE</p><br></br>
                 </div>
             </div>
-
-            <div className='orderr'>
+            {/* <div className='orderr'>
                 <div className='summaryy'>
                     Order summary
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

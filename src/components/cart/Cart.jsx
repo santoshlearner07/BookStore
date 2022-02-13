@@ -6,7 +6,7 @@ import Footer from '../footer/Footer';
 
 import { Button } from '@material-ui/core'
 import {
-    cartItemQuantity, getCartItemApi, removeCartItemApi
+    cartItemQuantity, getCartItemApi, removeCartItemApi, orderDetailsApi
 } from '../../services/axioService';
 import CustomerDetails from '../customerDetails/CustomerDetails';
 
@@ -128,12 +128,47 @@ function Cart() {
     }
 
     const continueOrder = () => {
-        setOpenOrderSummery(openOrderSummery)
+        setOpenOrderSummery(!openOrderSummery)
     }
 
     const home = () => {
         history.push('/homepage')
     }
+
+
+    const checkoutOrder = () => {
+
+            history.push('/orderdone')
+
+        // let array_ordered_books = [];
+
+        // filterArray.map((element) => {
+        //     let ordered_book = {
+        //         product_id: element._id,
+        //         product_name: element.product_id.bookName,
+        //         product_quantity: element.quantityToBuy,
+        //         product_price: element.product_id.price,
+        //     };
+        //     return array_ordered_books.push(ordered_book);
+        // });
+
+        // let orderObj = {
+        //     orders: array_ordered_books,
+        // };
+        // orderDetailsApi(orderObj)
+        //     .then((response) => {
+        //         console.log(response.data.message, "order items", response.data.result);
+        //         // history.push("/Homepage/Book/Cart/Orderplaced");
+        //     })
+        //     .catch((err) => {
+        //         console.warn(err);
+        //     });
+    };
+
+
+
+
+
 
     React.useEffect(() => {
         showCartItem();
@@ -176,7 +211,7 @@ function Cart() {
                                                 {item.product_id.author}
                                             </span> <br></br>
                                             <span className='cartNewPrice'>
-                                              Rs. {item.product_id.discountPrice}
+                                                Rs. {item.product_id.discountPrice}
                                             </span><br></br>
                                             <span className='cartOldPrice'>({item.product_id.price})</span> <br></br>
                                         </div>
@@ -223,8 +258,39 @@ function Cart() {
                         <CustomerDetails continueOrder={continueOrder} />
                     )}
                 </div>
-
-
+                <div className="OrderDetailContainer2">
+                    {!openOrderSummery ? (
+                        <h4 className="txt"></h4>
+                    ) : (
+                        <div className="orderSummeryContainer">
+                            <p className="txt">Order Summary </p>
+                            {filterArray.filter(item => item.product_id !== null).map((product, index) => (
+                                <div className="bookImgAddDetails" key={index}>
+                                    <div className="bookImgDiv">
+                                        <img className='theImage' src={thedesign}></img>
+                                    </div>
+                                    <div className="bookDetailsDiv-text">
+                                        <b className='bookName'>{product.product_id.bookName} </b>
+                                        <p className='author'>by-{product.product_id.author}</p>
+                                        <span style={{ width: "50px" }}>
+                                            <b className='discountPrice'>Rs. {product.product_id.discountPrice} </b>
+                                        </span>
+                                        <del style={{ color: "gray" }} className='price'>Rs {product.product_id.price} </del>
+                                    </div>
+                                </div>
+                            ))}
+                            <div className="checkout-btn">
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={checkoutOrder}
+                                >
+                                    Checkout
+                                </Button>
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
             <div className='footer'>
                 <Footer />
