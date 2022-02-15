@@ -135,19 +135,16 @@ function DisplayBook(props) {
                             </Button>
                         ) : (
                             <div className='buttonUse'>
-
                                 <Button className='minus' onClick={bookDecrement} id={props.item.item._id}
                                 > <RemoveCircleOutlineTwoToneIcon /> </Button>
                                 <Button> {quantity} </Button>
                                 <Button className='plus' onClick={bookIncrement} id={props.item.item._id}
                                 > <AddCircleOutlineTwoToneIcon /> </Button>
-
                             </div>
                         )
                     }
                     {
                         addWishList.length === 0 ? (
-
                             <Button className='wishlistB' style={{ backgroundColor: '#333333', color: 'white' }} variant="contained"
                                 onClick={() => wishList(props.item.item._id)} id={props.item.item._id} > <FavoriteBorderOutlinedIcon /> WISHLIST
                             </Button>
@@ -158,12 +155,8 @@ function DisplayBook(props) {
                                 </Button>
                             </div>
                         )
-
                     }
-
-
                 </div>
-
             </div>
             <div className='right-container'>
                 <section className="firstBasic">

@@ -9,9 +9,7 @@ function Book() {
     const [update, setUpdate] = React.useState([]);
 
     const clickMe = () => {
-        console.log("Api Calling")
         getBookApi(update).then((res) => {
-            console.log("in then")
             console.log(res)
             setUpdate(res.data.result)
         }).catch((err) => {

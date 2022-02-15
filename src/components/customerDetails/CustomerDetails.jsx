@@ -55,18 +55,23 @@ function CustomerDetails(props) {
 
 
     const updateCustomerdetails = () => {
+        if (addressObj != null){
         editCustomerDetailsApi(addressObj)
             .then((response) => {
                 console.log("updated address ", response);
+                props.continueOrder(true)
             })
             .catch((err) => {
                 console.warn(err);
             });
+        }
     };
 
 
     const continueOrder = () => {
-        setOpenOrderSummery(!openOrderSummery)
+        if (addressObj != null) {
+            setOpenOrderSummery(!openOrderSummery)
+        }
     }
 
     React.useEffect(() => {
@@ -166,7 +171,7 @@ function CustomerDetails(props) {
 
             <div className="continue-button-container">
                 <div className="continue-button" onClick={updateCustomerdetails}>
-                    <p onClick={() => props.continueOrder(true)}>CONTINUE</p><br></br>
+                    <p>CONTINUE</p><br></br>
                 </div>
             </div>
             {/* <div className='orderr'>

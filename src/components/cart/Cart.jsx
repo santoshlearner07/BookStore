@@ -23,6 +23,7 @@ function Cart() {
     const [openAddress, setOpenAddress] = React.useState(false);
     const [openOrderSummery, setOpenOrderSummery] = React.useState(false);
     const [quantity, setQuantity] = React.useState([filterArray.quantityToBuy]);
+const [showButton,setShowButton] = React.useState(true);
 
     let history = new useHistory();
 
@@ -125,10 +126,11 @@ function Cart() {
 
     const orderPlaced = () => {
         setOpenAddress(!openAddress)
+        setShowButton(false)
     }
 
     const continueOrder = () => {
-        setOpenOrderSummery(!openOrderSummery)
+        setOpenOrderSummery(true)
     }
 
     const home = () => {
@@ -148,7 +150,6 @@ function Cart() {
                 product_quantity: element.quantityToBuy,
                 product_price: element.price,
             };
-            console.log(element._id)
             return array_ordered_books.push(ordered_book);
         });
 
@@ -164,10 +165,6 @@ function Cart() {
                 console.warn(err);
             });
     };
-
-
-
-
 
 
     React.useEffect(() => {
@@ -232,10 +229,9 @@ function Cart() {
                             ))
                         }
                     </div>
-                    {filterArray.length !== 0 ? (
-                        <Button className='submit' variant="contained" onClick={orderPlaced} >Place Order</Button>
-                    ) : null
-                    }
+                    {showButton && (
+                        <Button className='submit' variant="contained" onClick={orderPlaced} hidden="hidden" >Place Order</Button>
+                    )}
                 </div>
 
                 <div className='address'>

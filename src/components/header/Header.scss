@@ -1,3 +1,5 @@
+// px 1300,1025,900,770,600,420-xr
+
 @mixin basicContent {
     justify-items: center;
     align-items: center;
@@ -24,7 +26,7 @@
         .bookLogo {
             width: 31.04px;
             height: 23.71px;
-            margin: 0vh 0vw 0vh 17vw;
+            margin: 0vh 0vw 0vh 13vw;
         }
         .bookStore {
             width: 91px;
@@ -53,20 +55,344 @@
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 1300px) {
     .homePage {
-
+        background-color: aqua;
         .homeHeader {
             background-color: #a03037;
-            width: 100%;
+            width: 200%;
+            .bookLogo {
+                width: 25px;
+                height: 20px;
+                margin: 0vh 0vw 0vh 7vw;
+            }
+            .bookStore {
+                width: 50px;
+                height: 30px;
+                font-size: 24px;
+                color: white;
+            }
+            .searchBar {
+                display: flex;
+                margin: 0vh 0vw 0vh 8vw;
+                .search {
+                    width: 800px;
+                    height: 33px;
+                    outline: none;
+                }
+            }
+            .profilebox {
+                margin: 0vh 0vw 0vh 2vw;
+                .profile {
+                    justify-items: center;
+                    align-items: center;
+                    display: grid;
+                    color: white;
+                    grid-template-columns: repeat(1, 1fr);
+                    background-color: #a03037;
+                    border: black 0.5px solid;
+                    width: 70px;
+                    height: 58px;
+                    font-size: small;
+                }
+            }
+            .shoppingCart {
+                justify-items: center;
+                align-items: center;
+                display: grid;
+                color: white;
+                grid-template-columns: repeat(1, 1fr);
+                background-color: #a03037;
+                border: black 0.5px solid;
+                width: 70px;
+                height: 58px;
+                font-size: small;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1025px) {
+    .homePage {
+        background-color: aqua;
+        .homeHeader {
+            background-color: #a03037;
+            width: 200%;
+            .bookLogo {
+                width: 25px;
+                height: 20px;
+                margin: 0vh 0vw 0vh 3vw;
+            }
+            .bookStore {
+                width: 50px;
+                height: 26px;
+                font-size: 18px;
+                color: white;
+            }
             .searchBar {
                 display: flex;
                 margin: 0vh 0vw 0vh 5vw;
                 .search {
-                    width: 100px;
+                    width: 650px;
                     height: 33px;
                     outline: none;
                 }
+            }
+            .profilebox {
+                margin: 0vh 0vw 0vh 2vw;
+                .profile {
+                    justify-items: center;
+                    align-items: center;
+                    display: grid;
+                    color: white;
+                    grid-template-columns: repeat(1, 1fr);
+                    background-color: #a03037;
+                    border: black 0.5px solid;
+                    width: 70px;
+                    height: 58px;
+                    font-size: small;
+                }
+            }
+            .shoppingCart {
+                justify-items: center;
+                align-items: center;
+                display: grid;
+                color: white;
+                grid-template-columns: repeat(1, 1fr);
+                background-color: #a03037;
+                border: black 0.5px solid;
+                width: 70px;
+                height: 58px;
+                font-size: small;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .homePage {
+        background-color: aqua;
+        .homeHeader {
+            background-color: #a03037;
+            width: 200%;
+            .bookLogo {
+                width: 30px;
+                height: 25px;
+                margin: 0vh 0vw 0vh 10vw;
+            }
+            .bookStore {
+                width: 50px;
+                height: 26px;
+                font-size: 20px;
+                color: white;
+            }
+            .searchBar {
+                display: flex;
+                margin: 0vh 0vw 0vh 10vw;
+                .search {
+                    width: 400px;
+                    height: 33px;
+                    outline: none;
+                }
+            }
+            .profilebox {
+                margin: 0vh 0vw 0vh 2vw;
+                .profile {
+                    justify-items: center;
+                    align-items: center;
+                    display: grid;
+                    color: white;
+                    grid-template-columns: repeat(1, 1fr);
+                    background-color: #a03037;
+                    border: black 0.5px solid;
+                    width: 70px;
+                    height: 58px;
+                    font-size: small;
+                }
+            }
+            .shoppingCart {
+                justify-items: center;
+                align-items: center;
+                display: grid;
+                color: white;
+                grid-template-columns: repeat(1, 1fr);
+                background-color: #a03037;
+                border: black 0.5px solid;
+                width: 70px;
+                height: 58px;
+                font-size: small;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .homePage {
+        background-color: aqua;
+        .homeHeader {
+            background-color: #a03037;
+            width: 200%;
+            .bookLogo {
+                width: 30px;
+                height: 25px;
+                margin: 0vh 0vw 0vh 5vw;
+            }
+            .bookStore {
+                width: 50px;
+                height: 26px;
+                font-size: 20px;
+                color: white;
+            }
+            .searchBar {
+                display: flex;
+                margin: 0vh 0vw 0vh 10vw;
+                .search {
+                    width: 400px;
+                    height: 33px;
+                    outline: none;
+                }
+            }
+            .profilebox {
+                margin: 0vh 0vw 0vh 2vw;
+                .profile {
+                    justify-items: center;
+                    align-items: center;
+                    display: grid;
+                    color: white;
+                    grid-template-columns: repeat(1, 1fr);
+                    background-color: #a03037;
+                    border: black 0.5px solid;
+                    width: 70px;
+                    height: 58px;
+                    font-size: small;
+                }
+            }
+            .shoppingCart {
+                justify-items: center;
+                align-items: center;
+                display: grid;
+                color: white;
+                grid-template-columns: repeat(1, 1fr);
+                background-color: #a03037;
+                border: black 0.5px solid;
+                width: 70px;
+                height: 58px;
+                font-size: small;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .homePage {
+        background-color: aqua;
+        .homeHeader {
+            background-color: #a03037;
+            width: 200%;
+            .bookLogo {
+                width: 30px;
+                height: 25px;
+                margin: 0vh 0vw 0vh 10vw;
+            }
+            .bookStore {
+                width: 50px;
+                height: 26px;
+                font-size: 20px;
+                color: white;
+            }
+            .searchBar {
+                display: flex;
+                margin: 0vh 0vw 0vh 10vw;
+                .search {
+                    width: 280px;
+                    height: 33px;
+                    outline: none;
+                }
+            }
+            .profilebox {
+                margin: 0vh 0vw 0vh 2vw;
+                .profile {
+                    justify-items: center;
+                    align-items: center;
+                    display: grid;
+                    color: white;
+                    grid-template-columns: repeat(1, 1fr);
+                    background-color: #a03037;
+                    border: black 0.5px solid;
+                    width: 70px;
+                    height: 58px;
+                    font-size: small;
+                }
+            }
+            .shoppingCart {
+                justify-items: center;
+                align-items: center;
+                display: grid;
+                color: white;
+                grid-template-columns: repeat(1, 1fr);
+                background-color: #a03037;
+                border: black 0.5px solid;
+                width: 70px;
+                height: 58px;
+                font-size: small;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .homePage {
+        .homeHeader {
+            background-color: #a03037;
+            width: 100%;
+            .bookLogo {
+                width: 20px;
+                height: 15px;
+                margin: 0vh 0vw 0vh 1vw;
+            }
+            .bookStore {
+                width: 50px;
+                height: 26px;
+                font-size: 15px;
+                color: white;
+            }
+            .searchBar {
+                display: flex;
+                margin: 0vh 0vw 0vh 5vw;
+                .search {
+                    width: 200px;
+                    height: 33px;
+                    outline: none;
+                }
+            }
+            .profilebox {
+                margin: 0vh 0vw 0vh 2vw;
+                .profile {
+                    justify-items: center;
+                    align-items: center;
+                    display: grid;
+                    color: white;
+                    grid-template-columns: repeat(1, 1fr);
+                    background-color: #a03037;
+                    border: black 0.5px solid;
+                    width: 50px;
+                    height: 58px;
+                    font-size: small;
+                }
+            }
+            .shoppingCart {
+                justify-items: center;
+                align-items: center;
+                display: grid;
+                color: white;
+                grid-template-columns: repeat(1, 1fr);
+                background-color: #a03037;
+                border: black 0.5px solid;
+                width: 50px;
+                height: 58px;
+                font-size: small;
             }
         }
     }
