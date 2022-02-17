@@ -39,30 +39,13 @@ function Card() {
     }
 
     return (
-        <div className='bookValue'>
-            {
-                select ? <DisplayBook item={viewBook} /> :
-                    bookNumber == 1 ?
-                        books.slice(0, 8).map((item, index) => (
-                            <div className='displayGrid'  >
-                                <div className="onlyImage" onClick={() => openImage(item)}>
-                                    <img className="image" src={thedesign}></img>
-                                </div>
-                                <div className="title">
-                                    <span className='bookName'>Book:{item.bookName}</span><br></br>
-                                    <span className='authorName'>Author:{item.author}</span>
-                                    <div className="bookRating">
-                                        <span className='star'>4.5*  </span>
-                                        <span className='reviewUser'> (20)</span>
-                                    </div>
-                                    <div className="mainValue">
-                                        <span className='value'>Rs:- {item.price}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        )) :
-                        bookNumber == 2 ?
-                            books.slice(8, 16).map((item, index) => (
+        <div>
+
+            <div className='bookValue'>
+                {
+                    select ? <DisplayBook item={viewBook} /> :
+                        bookNumber == 1 ?
+                            books.slice(0, 8).map((item, index) => (
                                 <div className='displayGrid'  >
                                     <div className="onlyImage" onClick={() => openImage(item)}>
                                         <img className="image" src={thedesign}></img>
@@ -79,19 +62,60 @@ function Card() {
                                         </div>
                                     </div>
                                 </div>
-                            )) : null
-            }
+                            )) :
+                            bookNumber == 2 ?
+                                books.slice(8, 16).map((item, index) => (
+                                    <div className='displayGrid'  >
+                                        <div className="onlyImage" onClick={() => openImage(item)}>
+                                            <img className="image" src={thedesign}></img>
+                                        </div>
+                                        <div className="title">
+                                            <span className='bookName'>Book:{item.bookName}</span><br></br>
+                                            <span className='authorName'>Author:{item.author}</span>
+                                            <div className="bookRating">
+                                                <span className='star'>4.5*  </span>
+                                                <span className='reviewUser'> (20)</span>
+                                            </div>
+                                            <div className="mainValue">
+                                                <span className='value'>Rs:- {item.price}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )) :
+                                bookNumber == 3 ?
+                                books.slice(16, 24).map((item, index) => (
+                                    <div className='displayGrid'  >
+                                        <div className="onlyImage" onClick={() => openImage(item)}>
+                                            <img className="image" src={thedesign}></img>
+                                        </div>
+                                        <div className="title">
+                                            <span className='bookName'>Book:{item.bookName}</span><br></br>
+                                            <span className='authorName'>Author:{item.author}</span>
+                                            <div className="bookRating">
+                                                <span className='star'>4.5*  </span>
+                                                <span className='reviewUser'> (20)</span>
+                                            </div>
+                                            <div className="mainValue">
+                                                <span className='value'>Rs:- {item.price}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )) : null
+                }
 
-            <div className='mainnumberPagination'>
-                <div className='numberPagination'>
-                    <Stack spacing={2}>
-                        <Pagination bookNumber={bookNumber} onChange={nextPage} count={5} />
-                    </Stack>
-                </div>
+                
+
+
             </div>
-
-
+            <div className='mainnumberPagination'>
+                    <div className='numberPagination'>
+                        <Stack spacing={2}>
+                            <Pagination bookNumber={bookNumber} onChange={nextPage} count={5} />
+                        </Stack>
+                    </div>
+                </div>
         </div>
+
     )
 }
 
