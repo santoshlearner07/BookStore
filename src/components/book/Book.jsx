@@ -2,6 +2,8 @@ import '../book/Book.scss'
 import React from 'react';
 import { getBookApi } from '../../services/axioService';
 import Card from '../card/Card';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 
 function Book() {
@@ -38,6 +40,7 @@ function Book() {
                 <Card />
 
             </div>
+        
         </div>
     )
 }

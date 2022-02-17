@@ -15,7 +15,7 @@ function Header() {
     }
 
     return (
-        <div className='homePage'>
+        <div className='homePages'>
             <div className='homeHeader'>
                 <img className='bookLogo' src={book} alt='this is book logo' />
                 <p className='bookStore' >Bookstore</p>

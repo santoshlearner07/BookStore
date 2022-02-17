@@ -4,12 +4,16 @@ import DisplayBook from '../displayBook/DisplayBook';
 
 import '../card/Card.scss'
 import { getBookApi } from '../../services/axioService';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 function Card() {
 
     const [books, setBooks] = React.useState([]);
-    const[select,setSelect] =React.useState(false);
+    const [select, setSelect] = React.useState(false);
     const [viewBook, setViewBook] = React.useState({});
+    const [bookNumber, setBookNumber] = React.useState(1);
+
 
     const getBookDetails = () => {
         getBookApi().then((res) => {
@@ -26,33 +30,67 @@ function Card() {
 
 
     const openImage = (item) => {
-        setViewBook({...viewBook,item})
+        setViewBook({ ...viewBook, item })
         setSelect(!select)
+    }
+
+    const nextPage = (e, value) => {
+        setBookNumber(value)
     }
 
     return (
         <div className='bookValue'>
             {
-                select ? <DisplayBook item={viewBook}/> :
-                books.map((item, index) => (
-                    <div  className='displayGrid'  >
-                        <div className="onlyImage" onClick={()=>openImage(item)}>
-                            <img className="image" src={thedesign}></img>
-                        </div>
-                        <div className="title">
-                            <span className='bookName'>Book:{item.bookName}</span><br></br>
-                            <span className='authorName'>Author:{item.author}</span>
-                            <div className="bookRating">
-                                <span className='star'>4.5*  </span>
-                                <span className='reviewUser'> (20)</span>
+                select ? <DisplayBook item={viewBook} /> :
+                    bookNumber == 1 ?
+                        books.slice(0, 8).map((item, index) => (
+                            <div className='displayGrid'  >
+                                <div className="onlyImage" onClick={() => openImage(item)}>
+                                    <img className="image" src={thedesign}></img>
+                                </div>
+                                <div className="title">
+                                    <span className='bookName'>Book:{item.bookName}</span><br></br>
+                                    <span className='authorName'>Author:{item.author}</span>
+                                    <div className="bookRating">
+                                        <span className='star'>4.5*  </span>
+                                        <span className='reviewUser'> (20)</span>
+                                    </div>
+                                    <div className="mainValue">
+                                        <span className='value'>Rs:- {item.price}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="mainValue">
-                                <span className='value'>Rs:- {item.price}</span>
-                            </div>
-                        </div>
-                    </div>
-                ))
+                        )) :
+                        bookNumber == 2 ?
+                            books.slice(8, 16).map((item, index) => (
+                                <div className='displayGrid'  >
+                                    <div className="onlyImage" onClick={() => openImage(item)}>
+                                        <img className="image" src={thedesign}></img>
+                                    </div>
+                                    <div className="title">
+                                        <span className='bookName'>Book:{item.bookName}</span><br></br>
+                                        <span className='authorName'>Author:{item.author}</span>
+                                        <div className="bookRating">
+                                            <span className='star'>4.5*  </span>
+                                            <span className='reviewUser'> (20)</span>
+                                        </div>
+                                        <div className="mainValue">
+                                            <span className='value'>Rs:- {item.price}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            )) : null
             }
+
+            <div className='mainnumberPagination'>
+                <div className='numberPagination'>
+                    <Stack spacing={2}>
+                        <Pagination bookNumber={bookNumber} onChange={nextPage} count={5} />
+                    </Stack>
+                </div>
+            </div>
+
+
         </div>
     )
 }

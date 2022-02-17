@@ -13,7 +13,7 @@
     font-size: medium;
 }
 
-.homePage {
+.homePages {
     width: 100%;
     height: 60px;
     .homeHeader {
@@ -56,7 +56,7 @@
 }
 
 @media screen and (max-width: 1300px) {
-    .homePage {
+    .homePages {
         background-color: aqua;
         .homeHeader {
             background-color: #a03037;
@@ -114,7 +114,7 @@
 
 
 @media screen and (max-width: 1025px) {
-    .homePage {
+    .homePages {
         background-color: aqua;
         .homeHeader {
             background-color: #a03037;
@@ -172,7 +172,7 @@
 
 
 @media screen and (max-width: 900px) {
-    .homePage {
+    .homePages {
         background-color: aqua;
         .homeHeader {
             background-color: #a03037;
@@ -229,7 +229,7 @@
 }
 
 @media screen and (max-width: 770px) {
-    .homePage {
+    .homePages {
         background-color: aqua;
         .homeHeader {
             background-color: #a03037;
@@ -286,7 +286,7 @@
 }
 
 @media screen and (max-width: 600px) {
-    .homePage {
+    .homePages {
         background-color: aqua;
         .homeHeader {
             background-color: #a03037;
@@ -343,7 +343,7 @@
 }
 
 @media screen and (max-width: 420px) {
-    .homePage {
+    .homePages {
         .homeHeader {
             background-color: #a03037;
             width: 100%;
