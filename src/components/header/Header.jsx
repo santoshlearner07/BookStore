@@ -6,13 +6,22 @@ import PermIdentityTwoToneIcon from '@mui/icons-material/PermIdentityTwoTone';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useHistory } from "react-router-dom";
 
-function Header() {
+function Header(props) {
+    
+    const [searchWord, setSearchWord] = React.useState('');
 
     let history = useHistory();
+    
+    const inputSearch =(e) =>{
+        setSearchWord(e.target.value)
+        props.listenToHeader(e.target.value);
+    console.log(e.target.value)
+    }
 
-    const clickCart =() =>{
+    const clickCart = () => {
         history.push('/cart')
     }
+
 
     return (
         <div className='homePages'>
@@ -21,7 +30,9 @@ function Header() {
                 <p className='bookStore' >Bookstore</p>
                 <div className='searchBar'>
                     {/* <SearchOutlinedIcon /> */}
-                    <input type='search' className='search' placeholder='Search...'></input>
+                    <input type='text' className='search' placeholder='Search...'
+                     value={searchWord} onChange={inputSearch}
+                    />
                 </div>
                 <div className='profilebox'>
                     <div className='profile'>

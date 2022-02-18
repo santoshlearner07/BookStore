@@ -5,12 +5,19 @@ import Book from '../../components/book/Book';
 import Footer from '../../components/footer/Footer';
 
 function Home() {
+
+    const [dataSearch,setDataSearch] = React.useState(' ');
+
+const listenToHeader = (data) =>{
+    setDataSearch(data)
+}
+
     return (
         <div className='homePage'>
-            <Header />
+            <Header listenToHeader={listenToHeader}/>
             <div className='bookBundle'>
                 <div >
-                    <Book />
+                    <Book dataSearch={dataSearch}/>
                 </div>
             </div>
             <div className='footer'>

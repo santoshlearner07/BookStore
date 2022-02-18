@@ -7,7 +7,7 @@ import { getBookApi } from '../../services/axioService';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
-function Card() {
+function Card(props) {
 
     const [books, setBooks] = React.useState([]);
     const [select, setSelect] = React.useState(false);
@@ -37,7 +37,7 @@ function Card() {
     const nextPage = (e, value) => {
         setBookNumber(value)
     }
-
+    console.log(props.dataSearchOne)
     return (
         <div>
 
@@ -45,26 +45,9 @@ function Card() {
                 {
                     select ? <DisplayBook item={viewBook} /> :
                         bookNumber == 1 ?
-                            books.slice(0, 8).map((item, index) => (
-                                <div className='displayGrid'  >
-                                    <div className="onlyImage" onClick={() => openImage(item)}>
-                                        <img className="image" src={thedesign}></img>
-                                    </div>
-                                    <div className="title">
-                                        <span className='bookName'>Book:{item.bookName}</span><br></br>
-                                        <span className='authorName'>Author:{item.author}</span>
-                                        <div className="bookRating">
-                                            <span className='star'>4.5*  </span>
-                                            <span className='reviewUser'> (20)</span>
-                                        </div>
-                                        <div className="mainValue">
-                                            <span className='value'>Rs:- {item.price}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            )) :
-                            bookNumber == 2 ?
-                                books.slice(8, 16).map((item, index) => (
+                            books.slice(0, 8)
+                                .filter(item => item.bookName.toLowerCase().includes(props.dataSearchOne.toLowerCase()))
+                                .map((item, index) => (
                                     <div className='displayGrid'  >
                                         <div className="onlyImage" onClick={() => openImage(item)}>
                                             <img className="image" src={thedesign}></img>
@@ -82,38 +65,61 @@ function Card() {
                                         </div>
                                     </div>
                                 )) :
+                            bookNumber == 2 ?
+                                books.slice(8, 16)
+                                    .filter(item => item.bookName.toLowerCase().includes(props.dataSearchOne.toLowerCase()))
+                                    .map((item, index) => (
+                                        <div className='displayGrid'  >
+                                            <div className="onlyImage" onClick={() => openImage(item)}>
+                                                <img className="image" src={thedesign}></img>
+                                            </div>
+                                            <div className="title">
+                                                <span className='bookName'>Book:{item.bookName}</span><br></br>
+                                                <span className='authorName'>Author:{item.author}</span>
+                                                <div className="bookRating">
+                                                    <span className='star'>4.5*  </span>
+                                                    <span className='reviewUser'> (20)</span>
+                                                </div>
+                                                <div className="mainValue">
+                                                    <span className='value'>Rs:- {item.price}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )) :
                                 bookNumber == 3 ?
-                                books.slice(16, 24).map((item, index) => (
-                                    <div className='displayGrid'  >
-                                        <div className="onlyImage" onClick={() => openImage(item)}>
-                                            <img className="image" src={thedesign}></img>
-                                        </div>
-                                        <div className="title">
-                                            <span className='bookName'>Book:{item.bookName}</span><br></br>
-                                            <span className='authorName'>Author:{item.author}</span>
-                                            <div className="bookRating">
-                                                <span className='star'>4.5*  </span>
-                                                <span className='reviewUser'> (20)</span>
+                                    books.slice(16, 24)
+                                        .filter(item => item.bookName.toLowerCase().includes(props.dataSearchOne.toLowerCase()))
+                                        .map((item, index) => (
+                                            <div className='displayGrid'  >
+                                                <div className="onlyImage" onClick={() => openImage(item)}>
+                                                    <img className="image" src={thedesign}></img>
+                                                </div>
+                                                <div className="title">
+                                                    <span className='bookName'>Book:{item.bookName}</span><br></br>
+                                                    <span className='authorName'>Author:{item.author}</span>
+                                                    <div className="bookRating">
+                                                        <span className='star'>4.5*  </span>
+                                                        <span className='reviewUser'> (20)</span>
+                                                    </div>
+                                                    <div className="mainValue">
+                                                        <span className='value'>Rs:- {item.price}</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="mainValue">
-                                                <span className='value'>Rs:- {item.price}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )) : null
+                                        )) : null
                 }
 
-                
+
 
 
             </div>
             <div className='mainnumberPagination'>
-                    <div className='numberPagination'>
-                        <Stack spacing={2}>
-                            <Pagination bookNumber={bookNumber} onChange={nextPage} count={5} />
-                        </Stack>
-                    </div>
+                <div className='numberPagination'>
+                    <Stack spacing={2}>
+                        <Pagination bookNumber={bookNumber} onChange={nextPage} count={5} />
+                    </Stack>
                 </div>
+            </div>
         </div>
 
     )

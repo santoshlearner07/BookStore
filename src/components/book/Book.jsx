@@ -6,7 +6,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
 
-function Book() {
+function Book(props) {
 
     const [update, setUpdate] = React.useState([]);
 
@@ -37,7 +37,7 @@ function Book() {
             </div>
             <div className='imageMap'>
 
-                <Card />
+                <Card dataSearchOne={props.dataSearch}/>
 
             </div>
         
