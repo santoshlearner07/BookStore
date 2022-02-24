@@ -11,6 +11,7 @@ import {
 
 import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
 import RemoveCircleOutlineTwoToneIcon from '@mui/icons-material/RemoveCircleOutlineTwoTone';
+import { connect } from 'react-redux'
 
 
 function DisplayBook(props) {
@@ -202,4 +203,5 @@ function DisplayBook(props) {
     )
 }
 
-export default DisplayBook
+// export default DisplayBook
+export default connect()(DisplayBook)

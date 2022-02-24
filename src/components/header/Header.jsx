@@ -5,6 +5,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import PermIdentityTwoToneIcon from '@mui/icons-material/PermIdentityTwoTone';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useHistory } from "react-router-dom";
+import { connect } from 'react-redux';
 
 function Header(props) {
     
@@ -49,4 +50,11 @@ function Header(props) {
     )
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+	return {
+		cartItems: state.cartItemReducer.cartItems,
+	};
+};
+
+// export default Header;
+export default connect(mapStateToProps)(Header);

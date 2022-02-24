@@ -4,6 +4,8 @@ import Header from '../../components/header/Header';
 import Book from '../../components/book/Book';
 import Footer from '../../components/footer/Footer';
 
+import { connect } from 'react-redux';
+
 function Home() {
 
     const [dataSearch,setDataSearch] = React.useState(' ');
@@ -27,4 +29,5 @@ const listenToHeader = (data) =>{
     )
 }
 
-export default Home;
+// export default Home;
+export default connect()(Home)

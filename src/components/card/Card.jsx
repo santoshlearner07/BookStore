@@ -6,6 +6,7 @@ import '../card/Card.scss'
 import { getBookApi } from '../../services/axioService';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { connect } from 'react-redux';
 
 function Card(props) {
 
@@ -125,4 +126,11 @@ function Card(props) {
     )
 }
 
-export default Card;
+const mapStateToProps = (state) => {
+	return {
+		books: state.bookReducer.books,
+	};
+};
+
+// export default Card;
+export default connect(mapStateToProps)(Card);

@@ -9,6 +9,9 @@ import {
     cartItemQuantity, getCartItemApi, removeCartItemApi, orderDetailsApi
 } from '../../services/axioService';
 import CustomerDetails from '../customerDetails/CustomerDetails';
+import { connect } from 'react-redux';
+import { setCartItem } from '../../redux/Action';
+
 
 import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
 import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
@@ -16,14 +19,14 @@ import RemoveCircleOutlineTwoToneIcon from '@mui/icons-material/RemoveCircleOutl
 
 import '../cart/Cart.scss'
 
-function Cart() {
+function Cart(props) {
 
     const [filterArray, setFilterArray] = React.useState([]);
     const [cardIdDetails, setCartIdDetails] = React.useState([]);
     const [openAddress, setOpenAddress] = React.useState(false);
     const [openOrderSummery, setOpenOrderSummery] = React.useState(false);
     const [quantity, setQuantity] = React.useState([filterArray.quantityToBuy]);
-const [showButton,setShowButton] = React.useState(true);
+    const [showButton, setShowButton] = React.useState(true);
 
     let history = new useHistory();
 
@@ -49,6 +52,7 @@ const [showButton,setShowButton] = React.useState(true);
                 // console.log(res)
                 console.log(data)
                 showCartItem();
+                props.dispatch(setCartItem(0));
                 console.log("cart item removed")
             }).catch((err) => {
                 console.log(err)
@@ -295,4 +299,5 @@ const [showButton,setShowButton] = React.useState(true);
     )
 }
 
-export default Cart
+// export default Cart;
+export default connect()(Cart);
