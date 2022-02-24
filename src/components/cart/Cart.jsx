@@ -49,7 +49,7 @@ function Cart(props) {
 
         removeCartItemApi(cardIdDetails, data)
             .then((res) => {
-                // console.log(res)
+                console.log(res)
                 console.log(data)
                 showCartItem();
                 props.dispatch(setCartItem(0));
@@ -78,7 +78,7 @@ function Cart(props) {
 
         cartItemQuantity(cardIdDetails, data)
             .then((res) => {
-                // console.log(res)
+                console.log(res)
                 console.log(data)
                 showCartItem();
                 console.log("Show Cart - Item")
@@ -299,5 +299,4 @@ function Cart(props) {
     )
 }
 
-// export default Cart;
 export default connect()(Cart);

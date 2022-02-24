@@ -29,5 +29,4 @@ const listenToHeader = (data) =>{
     )
 }
 
-// export default Home;
 export default connect()(Home)

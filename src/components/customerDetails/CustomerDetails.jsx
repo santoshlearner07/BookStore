@@ -174,11 +174,6 @@ function CustomerDetails(props) {
                     <p>CONTINUE</p><br></br>
                 </div>
             </div>
-            {/* <div className='orderr'>
-                <div className='summaryy'>
-                    Order summary
-                </div>
-            </div> */}
         </div>
     );
 }

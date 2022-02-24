@@ -203,5 +203,4 @@ function DisplayBook(props) {
     )
 }
 
-// export default DisplayBook
 export default connect()(DisplayBook)
